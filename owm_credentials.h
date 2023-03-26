@@ -1,4 +1,3 @@
-const bool DebugDisplayUpdate = true;
 
 // Change to your WiFi credentials
 const char* ssid     = "name of the wifi";
