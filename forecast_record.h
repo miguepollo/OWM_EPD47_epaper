@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-typedef struct { // For current Day and Day 1, 2, 3, etc
+typedef struct {// For current Day and Day 1, 2, 3, etc
   int      Dt;
   String   Period;
   String   Icon;

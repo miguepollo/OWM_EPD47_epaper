@@ -212,7 +212,7 @@ bool DecodeWeather(WiFiClient& json, String Type) {
   }
   if (Type == "forecast") {
     //Serial.println(json);
-    Serial.print(F("\nReceiving Forecast period - ")); //------------------------------------------------
+    Serial.print(F("\nReceiving Forecast period - ")); 
     JsonArray list                  = root["list"];
     for (byte r = 0; r < max_readings; r++) {
       Serial.println("\nPeriod-" + String(r) + "--------------");
@@ -246,7 +246,6 @@ bool DecodeWeather(WiFiClient& json, String Type) {
   }
   return true;
 }
-//#########################################################################################
 String ConvertUnixTime(int unix_time) {
   // Returns either '21:12  ' or ' 09:12pm' depending on Units mode
   time_t tm = unix_time;
@@ -260,7 +259,6 @@ String ConvertUnixTime(int unix_time) {
   }
   return output;
 }
-//#########################################################################################
 bool obtainWeatherData(WiFiClient & client, const String & RequestType) {
   const String units = (Units == "M" ? "metric" : "imperial");
   client.stop(); // close connection before sending a new request
