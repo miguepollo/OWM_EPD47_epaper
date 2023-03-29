@@ -20,9 +20,9 @@
 #define SCREEN_WIDTH   EPD_WIDTH
 #define SCREEN_HEIGHT  EPD_HEIGHT
 
-//################  VERSION  ###############################################
-String version = "2.5 / 4.7in";  // Programme version, see change log at end.
-//################ VARIABLES ###############################################
+//################  VERSION  ##############################################
+String version = "2.5 / 4.7in";// Programme version, see change log at end.
+//################ VARIABLES ##############################################
 
 enum alignment {LEFT, RIGHT, CENTER};
 #define White         0xFF
@@ -43,8 +43,8 @@ boolean SmallIcon   = false;
 String  Time_str = "--:--:--";
 String  Date_str = "-- --- ----";
 int     wifi_signal, CurrentHour = 0, CurrentMin = 0, CurrentSec = 0, EventCnt = 0, vref = 1100;
-//################ PROGRAM VARIABLES and OBJECTS ##########################################
-#define max_readings 40   // Limited to 3-days here, but could go to 5-days = 40  
+//################ PROGRAM VARIABLES and OBJECTS ################
+#define max_readings 40 // Limited to 3-days here, but could go to 5-days = 40  
 
 Forecast_record_type  WxConditions[1];
 Forecast_record_type  WxForecast[max_readings];
@@ -55,7 +55,7 @@ float humidity_readings[max_readings]    = {0};
 float rain_readings[max_readings]        = {0};
 float snow_readings[max_readings]        = {0};
 
-long SleepDuration   = 5; // Sleep time in minutes, aligned to the nearest minute boundary, so if 30 will always update at 00 or 30 past the hour
+long SleepDuration   = 5; // Sleep time in minutes, aligned to the nearest minute boundary.
 int  WakeupHour      = 7;  // Don't wakeup until after 07:00 to save battery power
 int  SleepHour       = 23; // Sleep after 23:00 to save battery power
 long StartTime       = 0;
