@@ -8,14 +8,11 @@
 #include "freertos/task.h"      // In-built
 #include "epd_driver.h"         // https://github.com/Xinyuan-LilyGO/LilyGo-EPD47
 #include "esp_adc_cal.h"        // In-built
-
 #include <ArduinoJson.h>        // https://github.com/bblanchon/ArduinoJson
 #include <HTTPClient.h>         // In-built
-
 #include <WiFi.h>               // In-built
 #include <SPI.h>                // In-built
 #include <time.h>               // In-built
-
 #include "owm_credentials.h"
 #include "forecast_record.h"
 #include "lang_es.h"
@@ -23,9 +20,9 @@
 #define SCREEN_WIDTH   EPD_WIDTH
 #define SCREEN_HEIGHT  EPD_HEIGHT
 
-//################  VERSION  ##################################################
-String version = "2.5 / 4.7in";  // Programme version, see change log at end
-//################ VARIABLES ##################################################
+//################  VERSION  ###############################################
+String version = "2.5 / 4.7in";  // Programme version, see change log at end.
+//################ VARIABLES ###############################################
 
 enum alignment {LEFT, RIGHT, CENTER};
 #define White         0xFF
