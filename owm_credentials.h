@@ -1,10 +1,10 @@
 
 // Change to your WiFi credentials
-const char* ssid     = "name of the wifi";
-const char* password = "password of your wifi";
+const char* ssid     = "your wifi";
+const char* password = "your password";
 
 // Use your own API key by signing up for a free developer account at https://openweathermap.org/
-String apikey       = "put wour own weathermap credentials";                      // See: https://openweathermap.org/
+String apikey       = "your openweathermap credentials";                      // See: https://openweathermap.org/
 const char server[] = "api.openweathermap.org";
 //http://api.openweathermap.org/data/2.5/forecast?q=Melksham,UK&APPID=your_OWM_API_key&mode=json&units=metric&cnt=40
 //http://api.openweathermap.org/data/2.5/weather?q=Melksham,UK&APPID=your_OWM_API_key&mode=json&units=metric&cnt=1
@@ -13,7 +13,7 @@ const char server[] = "api.openweathermap.org";
 String City             = "your city";                          // Your home city See: http://bulk.openweathermap.org/sample/
 String Country          = "your country";                            // Your _ISO-3166-1_two-letter_country_code country code, on OWM find your nearest city and the country code is displayed
                                                            // https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-String Language         = "es";                            // NOTE: Only the weather description is translated by OWM
+String Language         = "your language";                 // NOTE: Only the weather description is translated by OWM
                                                            // Examples: Arabic (AR) Czech (CZ) English (EN) Greek (EL) Persian(Farsi) (FA) Galician (GL) Hungarian (HU) Japanese (JA)
                                                            // Korean (KR) Latvian (LA) Lithuanian (LT) Macedonian (MK) Slovak (SK) Slovenian (SL) Vietnamese (VI)
 String Hemisphere       = "north";                         // or "south"  
