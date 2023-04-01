@@ -47,7 +47,7 @@ String  Time_str = "--:--:--";
 String  Date_str = "-- --- ----";
 int     wifi_signal, CurrentHour = 0, CurrentMin = 0, CurrentSec = 0, EventCnt = 0, vref = 1100;
 //################ PROGRAM VARIABLES and OBJECTS ##########################################
-#define max_readings 40   // Limited to 3-days here, but could go to 5-days = 40  
+#define max_readings 40   // Limited to 3-days here, but could go to 5-days = 40 
 
 Forecast_record_type  WxConditions[1];
 Forecast_record_type  WxForecast[max_readings];
@@ -660,7 +660,7 @@ void DrawRSSI(int x, int y, int rssi) {
 boolean UpdateLocalTime() {
   struct tm timeinfo;
   char   time_output[30], day_output[30], update_time[30];
-  while (!getLocalTime(&timeinfo, 1500)) { // Wait for 5-sec for time to synchronise
+  while (!getLocalTime(&timeinfo, 4000)) { // Wait for 4-sec for time to synchronise
     Serial.println("Fallo al obtener tiempo");
     return false;
   }
