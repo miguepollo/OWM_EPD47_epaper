@@ -134,18 +134,18 @@ void InitialiseSystem() {
 }
 
 void loop() {
-  // Nothing to do here
+  // Nothing to do here. you can't remove it, otherwise it won't work.
 }
 
 void setup() {
   InitialiseSystem();
 
   if (StartWiFi() == WL_CONNECTED && SetupTime() == true) {
-    bool WakeUp = false;                
+    bool WakeUp = false;
     if (WakeupHour > SleepHour)
-      WakeUp = (CurrentHour >= WakeupHour || CurrentHour <= SleepHour); 
-    else                             
-      WakeUp = (CurrentHour >= WakeupHour && CurrentHour <= SleepHour);                              
+      WakeUp = (CurrentHour >= WakeupHour || CurrentHour <= SleepHour);
+    else
+      WakeUp = (CurrentHour >= WakeupHour && CurrentHour <= SleepHour);
     if (WakeUp) {
       byte Attempts = 1;
       bool RxWeather  = false;
@@ -660,7 +660,7 @@ void DrawRSSI(int x, int y, int rssi) {
 boolean UpdateLocalTime() {
   struct tm timeinfo;
   char   time_output[30], day_output[30], update_time[30];
-  while (!getLocalTime(&timeinfo, 5000)) { // Wait for 5-sec for time to synchronise
+  while (!getLocalTime(&timeinfo, 1500)) { // Wait for 5-sec for time to synchronise
     Serial.println("Fallo al obtener tiempo");
     return false;
   }
