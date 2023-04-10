@@ -126,12 +126,12 @@ void InitialiseSystem() {
   Serial.println(String(__FILE__) + "\nStarting...");
   epd_init();
   framebuffer = (uint8_t *)ps_calloc(sizeof(uint8_t), EPD_WIDTH * EPD_HEIGHT / 2);
-  if (!framebuffer) Serial.println("fallo de memoria!");
+  if (!framebuffer) Serial.println("memory failure!");
   memset(framebuffer, 0xFF, EPD_WIDTH * EPD_HEIGHT / 2);
 }
 
 void loop() {
-  // Nothing to do here
+  // Nothing to do here. Not remove  if remove "void lopp" not compilate.
 }
 
 void setup() {
