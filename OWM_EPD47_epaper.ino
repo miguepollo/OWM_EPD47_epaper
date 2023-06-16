@@ -16,7 +16,7 @@
 #include <time.h>               // In-built
 #include "owm_credentials.h"
 #include "forecast_record.h"
-#include "lang_es.h" // you can change the language, as you see there are three languages but you can create another language and change it
+#include "lang_es.h" // you can change the language, as you see there are three languages but you can create another language and change it.
 
 #define SCREEN_WIDTH   EPD_WIDTH
 #define SCREEN_HEIGHT  EPD_HEIGHT
@@ -56,7 +56,7 @@ float humidity_readings[max_readings]    = {0};
 float rain_readings[max_readings]        = {0};
 float snow_readings[max_readings]        = {0};
 
-long SleepDuration   = 5; // Sleep time in minutes, aligned to the nearest minute boundary.
+long SleepDuration   = 10; // Sleep time in minutes, aligned to the nearest minute boundary.
 int  WakeupHour      = 7;  // Don't wakeup until after 07:00 to save battery power
 int  SleepHour       = 23; // Sleep after 23:00 to save battery power
 long StartTime       = 0;
@@ -657,7 +657,7 @@ boolean UpdateLocalTime() {
   struct tm timeinfo;
   char   time_output[30], day_output[30], update_time[30];
   while (!getLocalTime(&timeinfo, 5000)) { // Wait for 5-sec for time to synchronise
-    Serial.println("Fallo al obtener tiempo");
+    Serial.println("Failed to obtain time");
     return false;
   }
   CurrentHour = timeinfo.tm_hour;
