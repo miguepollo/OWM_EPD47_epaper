@@ -2,7 +2,6 @@
 // This software, the ideas and concepts is Copyright (c) David Bird 2021. All rights to this software are reserved.
 // #################################################################################################################
 
-#include <Wire.h>               // In-built
 #include <Arduino.h>            // In-built
 #include <esp_task_wdt.h>       // In-built
 #include "freertos/FreeRTOS.h"  // In-built
@@ -16,7 +15,7 @@
 #include <time.h>               // In-built
 #include "owm_credentials.h"
 #include "forecast_record.h"
-#include "lang_es.h" // you can change the language, as you see there are three languages but you can create another language and change it.
+#include "lang_es.h"
 
 #define SCREEN_WIDTH   EPD_WIDTH
 #define SCREEN_HEIGHT  EPD_HEIGHT
@@ -56,7 +55,7 @@ float humidity_readings[max_readings]    = {0};
 float rain_readings[max_readings]        = {0};
 float snow_readings[max_readings]        = {0};
 
-long SleepDuration   = 10; // Sleep time in minutes, aligned to the nearest minute boundary.
+long SleepDuration   = 5; // Sleep time in minutes, aligned to the nearest minute boundary.
 int  WakeupHour      = 7;  // Don't wakeup until after 07:00 to save battery power
 int  SleepHour       = 23; // Sleep after 23:00 to save battery power
 long StartTime       = 0;
@@ -108,9 +107,9 @@ uint8_t StartWiFi() {
   }
   if (WiFi.status() == WL_CONNECTED) {
     wifi_signal = WiFi.RSSI(); // Get Wifi Signal strength now, because the WiFi will be turned off to save power!
-    Serial.println("you are connected to: " + WiFi.localIP().toString());
+    Serial.println("conectado a: " + WiFi.localIP().toString());
   }
-  else Serial.println("*** WIFI FAILED ***");
+  else Serial.println("*** FALLO DE LA WIFI ***");
   return WiFi.status();
 }
 
@@ -132,7 +131,7 @@ void InitialiseSystem() {
 }
 
 void loop() {
-  // Nothing to do here. Not remove if remove "void lopp" not compilate.
+  // Nothing to do here. Not remove  if remove "void lopp" not compilate.
 }
 
 void setup() {
@@ -149,7 +148,7 @@ void setup() {
       bool RxWeather  = false;
       bool RxForecast = false;
       WiFiClient client;   // wifi client object
-      while ((RxWeather == false || RxForecast == false) && Attempts <= 3) { // Try up-to 2 time for Weather and Forecast data
+      while ((RxWeather == false || RxForecast == false) && Attempts <= 2) { // Try up-to 2 time for Weather and Forecast data
         if (RxWeather  == false) RxWeather  = obtainWeatherData(client, "weather");
         if (RxForecast == false) RxForecast = obtainWeatherData(client, "forecast");
         Attempts++;
@@ -348,7 +347,7 @@ void DisplayGeneralInfoSection() {
   setFont(OpenSans10B);
   drawString(5, 2, City, LEFT);
   setFont(OpenSans8B);
-  drawString(225, 2, Date_str + "   -  Actualizado a las " + Time_str, LEFT);
+  drawString(200, 2, Date_str + "  - Actualizado a las  " + Time_str, LEFT);
 }
 
 void DisplayWeatherIcon(int x, int y) {
@@ -657,7 +656,7 @@ boolean UpdateLocalTime() {
   struct tm timeinfo;
   char   time_output[30], day_output[30], update_time[30];
   while (!getLocalTime(&timeinfo, 5000)) { // Wait for 5-sec for time to synchronise
-    Serial.println("Failed to obtain time");
+    Serial.println("Fallo al obtener tiempo");
     return false;
   }
   CurrentHour = timeinfo.tm_hour;
@@ -694,7 +693,7 @@ void DrawBattery(int x, int y) {
     Serial.println("\nVoltage = " + String(voltage));
     percentage = 2836.9625 * pow(voltage, 4) - 43987.4889 * pow(voltage, 3) + 255233.8134 * pow(voltage, 2) - 656689.7123 * voltage + 632041.7303;
     if (voltage >= 4.20) percentage = 100;
-    if (voltage <= 3.60) percentage = 0;  // orig 3.5
+    if (voltage <= 3.50) percentage = 0;  // orig 3.5
     drawRect(x + 25, y - 14, 40, 15, Black);
     fillRect(x + 65, y - 10, 4, 7, Black);
     fillRect(x + 27, y - 12, 36 * percentage / 100.0, 11, Black);
@@ -1088,6 +1087,3 @@ void setFont(GFXfont const &font) {
 void edp_update() {
   epd_draw_grayscale_image(epd_full_screen(), framebuffer); // Update the screen
 }
-/*
-   1094 lines of code 23-03-2023
-*/
