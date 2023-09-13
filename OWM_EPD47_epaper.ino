@@ -55,7 +55,7 @@ float humidity_readings[max_readings]    = {0};
 float rain_readings[max_readings]        = {0};
 float snow_readings[max_readings]        = {0};
 
-long SleepDuration   = 5; // Sleep time in minutes, aligned to the nearest minute boundary.
+long SleepDuration   = 10; // Sleep time in minutes, aligned to the nearest minute boundary.
 int  WakeupHour      = 7;  // Don't wakeup until after 07:00 to save battery power
 int  SleepHour       = 23; // Sleep after 23:00 to save battery power
 long StartTime       = 0;
